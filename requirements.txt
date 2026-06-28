@@ -1,0 +1,10 @@
+# --- Model + parameter-efficient fine-tuning ---
+torch
+transformers
+peft
+datasets
+accelerate
+sentencepiece
+
+# --- Evaluation (IFEval via lm-evaluation-harness) ---
+lm-eval

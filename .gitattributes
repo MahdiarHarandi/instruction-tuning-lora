@@ -1,0 +1,8 @@
+# Treat known binaries as binary (no EOL/diff normalization)
+*.safetensors binary
+*.npy binary
+*.xlsx binary
+*.pdf binary
+*.model binary
+*.png binary
+*.jpg binary
