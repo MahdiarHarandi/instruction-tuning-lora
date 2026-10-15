@@ -46,8 +46,9 @@ Fine-tuning roughly **tripled instruction-level accuracy**. Qualitative tests
 (escalating slogan prompts: all-caps → end-with-"soul" → exactly-7-words → JSON)
 show the tuned model respecting formatting constraints the base model ignores.
 
-> The 50-sample limit is a compute constraint, so absolute numbers carry
-> variance — the comparison is meaningful as a *relative* base-vs-tuned delta.
+> These results describe one run on a 50-sample subset. They do not establish
+> performance on the full IFEval benchmark; a larger evaluation and repeated
+> runs would help assess stability.
 
 ---
 
@@ -68,16 +69,16 @@ show the tuned model respecting formatting constraints the base model ignores.
 
 ```
 .
-├── NLP_CA4_Q2_Harandi_810199596.ipynb     # main: LoRA SFT + IFEval evaluation
-├── NLP_CA4_Q1_Harandi_810199596.ipynb     # related: BART vs GPT-2 for Text-to-SQL
+├── instruction_tuning_lora.ipynb     # main: LoRA SFT + IFEval evaluation
+├── text_to_sql_bart_vs_gpt2.ipynb     # related: BART vs GPT-2 for Text-to-SQL
 └── Q2_adapter&merged/
     ├── tinyllama_lora_adapter/             # LoRA adapter (~12.5 MB) + tokenizer
     └── tinyllama_lora_merged/              # merged standalone model + tokenizer
 ```
 
-> Note: `NLP_CA4_Q1` is a separate experiment (encoder–decoder vs. decoder-only
-> for Text-to-SQL) included here for reference; the instruction-tuning project is
-> `NLP_CA4_Q2`. Consider splitting it into its own repository.
+> `text_to_sql_bart_vs_gpt2.ipynb` is a separate course experiment comparing
+> BART and GPT-2 for Text-to-SQL. The main instruction-tuning experiment is in
+> `instruction_tuning_lora.ipynb`.
 
 ---
 
@@ -88,7 +89,8 @@ pip install transformers peft datasets accelerate
 pip install lm-eval            # for IFEval
 ```
 
-Then open `NLP_CA4_Q2_...ipynb` (GPU recommended) and run top to bottom:
+Then open [instruction_tuning_lora.ipynb](instruction_tuning_lora.ipynb)
+(GPU recommended) and run top to bottom:
 data prep → LoRA config → SFT → save/merge → qualitative tests → IFEval.
 
 Use the fine-tuned model by loading the base model and attaching the included
